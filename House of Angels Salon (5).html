@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of Angels | Luxury Salon & Spa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            light: '#F3E5AB',
+                            DEFAULT: '#D4AF37',
+                            dark: '#AA820A',
+                            deep: '#856508'
+                        },
+                        luxblack: {
+                            DEFAULT: '#0a0a0a',
+                            card: '#121212',
+                            border: '#2a220f'
+                        }
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        playfair: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #f3f4f6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA820A 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA820A 100%);
+        }
+
+        .gold-border {
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .gold-border:focus {
+            border-color: #D4AF37;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Extremely smooth & very slow right-to-left banner scroll */
+        @keyframes flyBannerSlow {
+            0% {
+                transform: translateX(110vw);
+            }
+            100% {
+                transform: translateX(-110vw);
+            }
+        }
+
+        .animate-fly-slow {
+            animation: flyBannerSlow 9s linear forwards;
+        }
+
+        /* Sparkle float effect */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(3deg); }
+        }
+
+        .animate-float {
+            animation: floatSlow 4s ease-in-out infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #AA820A;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+    </style>
+</head>
+<body class="bg-luxblack text-gray-100 selection:bg-gold selection:text-black">
+
+    <div id="intro-screen" class="fixed inset-0 z-50 bg-[#070707] flex flex-col items-center justify-center overflow-hidden transition-opacity duration-300">
+        <!-- Background Ambient Glow -->
+        <div class="absolute w-[500px] h-[500px] bg-gold/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <!-- Flying Angel and Banner Container -->
+        <div class="relative w-full overflow-hidden py-10 flex items-center justify-center">
+            <div id="flying-banner-wrapper" class="flex items-center gap-6 whitespace-nowrap animate-fly-slow px-4">
+                
+                <!-- Golden Winged Angel Graphic / SVG -->
+                <div class="relative flex items-center justify-center animate-float">
+                    <div class="absolute inset-0 bg-gold/20 blur-xl rounded-full"></div>
+                    <svg class="w-24 h-24 sm:w-32 sm:h-32 text-gold filter drop-shadow-[0_0_15px_rgba(212,175,55,0.6)]" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                        <path d="M12,4 C8,4 4,7 3,11 C5,9 8,9 10,10 C7,11 4,14 4,17 C6,15 9,14 11,15 C11,17 12,19 12,21 C12,19 13,17 13,15 C15,14 18,15 20,17 C20,14 17,11 14,10 C16,9 19,9 21,11 C20,7 16,4 12,4 Z" fill="url(#goldGrad)"/>
+                        <defs>
+                            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#F3E5AB" />
+                                <stop offset="50%" stop-color="#D4AF37" />
+                                <stop offset="100%" stop-color="#AA820A" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <!-- Royal Banner Streamer -->
+                <div class="relative bg-gradient-to-r from-gold-deep via-gold to-gold-light p-[2px] rounded-xl shadow-[0_0_30px_rgba(212,175,55,0.4)]">
+                    <div class="bg-luxblack px-8 py-5 rounded-xl border border-gold/40 flex items-center gap-4">
+                        <i class="fa-solid fa-crown text-gold text-2xl animate-pulse"></i>
+                        <span class="font-cinzel text-2xl sm:text-4xl font-extrabold tracking-widest gold-gradient-text uppercase">
+                            Welcome to House of Angels
+                        </span>
+                        <i class="fa-solid fa-crown text-gold text-2xl animate-pulse"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Skip Intro Button for User Convenience -->
+        <button onclick="dismissIntro()" class="absolute bottom-10 text-gold/70 hover:text-gold text-sm tracking-widest uppercase border border-gold/30 px-6 py-2 rounded-full transition hover:bg-gold/10">
+            Skip Intro <i class="fa-solid fa-arrow-right ml-2"></i>
+        </button>
+    </div>
+
+    <header class="fixed top-0 left-0 w-full z-40 bg-luxblack/90 backdrop-blur-md border-b border-gold/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-gold-dark via-gold to-gold-light flex items-center justify-center shadow-[0_0_12px_rgba(212,175,55,0.4)]">
+                    <i class="fa-solid fa-feather text-black text-lg"></i>
+                </div>
+                <div>
+                    <span class="font-cinzel font-bold text-xl tracking-wider gold-gradient-text block">HOUSE OF ANGELS</span>
+                    <span class="text-[10px] tracking-[0.3em] text-gray-400 uppercase font-sans block">Luxury Salon & Spa</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm tracking-widest uppercase">
+                <a href="#home" class="text-gold hover:text-gold-light transition">Home</a>
+                <a href="#services" class="text-gray-300 hover:text-gold transition">Services</a>
+                <a href="#gallery" class="text-gray-300 hover:text-gold transition">Gallery</a>
+                <a href="#about" class="text-gray-300 hover:text-gold transition">About Us</a>
+                <a href="#contact" class="text-gray-300 hover:text-gold transition">Contact</a>
+            </nav>
+
+            <!-- Book Appointment CTA Header -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="tel:03060001929" class="text-xs text-gold flex items-center gap-2 border border-gold/30 px-4 py-2.5 rounded-full hover:bg-gold/10 transition">
+                    <i class="fa-solid fa-phone"></i> 0306-0001929
+                </a>
+                <a href="#booking" class="gold-gradient-bg text-black font-semibold text-xs tracking-wider uppercase px-6 py-2.5 rounded-full shadow-lg hover:brightness-110 transition">
+                    Book Now
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menu-btn" onclick="toggleMobileMenu()" class="md:hidden text-gold text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-luxblack/95 border-b border-gold/20 px-6 py-6 space-y-4">
+            <a href="#home" onclick="toggleMobileMenu()" class="block text-gold font-medium tracking-widest uppercase">Home</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold font-medium tracking-widest uppercase">Services</a>
+            <a href="#gallery" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold font-medium tracking-widest uppercase">Gallery</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold font-medium tracking-widest uppercase">About Us</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-gold font-medium tracking-widest uppercase">Contact</a>
+            <div class="pt-4 border-t border-gold/10 flex flex-col gap-3">
+                <a href="tel:03060001929" class="text-gold text-center py-2 border border-gold/30 rounded-full"><i class="fa-solid fa-phone mr-2"></i> 0306-0001929</a>
+                <a href="#booking" onclick="toggleMobileMenu()" class="gold-gradient-bg text-black text-center font-semibold py-3 rounded-full uppercase text-xs tracking-widest">Book Appointment</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0e0e0e] via-luxblack to-[#0a0a0a]">
+        <!-- Background decorative lighting -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[150px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs tracking-[0.2em] uppercase font-semibold">
+                    <i class="fa-solid fa-star text-[10px]"></i> Royal Salon Experience
+                </div>
+                <h1 class="font-cinzel text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight">
+                    Where Beauty Meets <span class="gold-gradient-text">Divine Elegance</span>
+                </h1>
+                <p class="text-gray-300 text-base sm:text-lg max-w-2xl font-light leading-relaxed">
+                    Step into House of Angels and indulge in bespoke hair styling, luxury bridal makeovers, rejuvenating facials, and advanced spa treatments crafted exclusively for royalty.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#booking" class="w-full sm:w-auto gold-gradient-bg text-black font-bold px-8 py-4 rounded-full tracking-wider uppercase text-xs shadow-xl hover:scale-105 transition transform text-center">
+                        Book Your Transformation
+                    </a>
+                    <a href="#services" class="w-full sm:w-auto border border-gold/40 text-gold hover:bg-gold/10 font-medium px-8 py-4 rounded-full tracking-wider uppercase text-xs transition text-center">
+                        Explore Services
+                    </a>
+                </div>
+                <!-- Trust Stats -->
+                <div class="grid grid-cols-3 gap-6 pt-8 border-t border-gold/20 max-w-lg mx-auto lg:mx-0">
+                    <div>
+                        <h4 class="font-cinzel text-2xl sm:text-3xl font-bold gold-gradient-text">100%</h4>
+                        <p class="text-gray-400 text-xs tracking-wider uppercase mt-1">Organic Products</p>
+                    </div>
+                    <div>
+                        <h4 class="font-cinzel text-2xl sm:text-3xl font-bold gold-gradient-text">15+</h4>
+                        <p class="text-gray-400 text-xs tracking-wider uppercase mt-1">Master Stylists</p>
+                    </div>
+                    <div>
+                        <h4 class="font-cinzel text-2xl sm:text-3xl font-bold gold-gradient-text">5,000+</h4>
+                        <p class="text-gray-400 text-xs tracking-wider uppercase mt-1">Royal Clients</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Image Banner / Card -->
+            <div class="lg:col-span-5 relative flex justify-center">
+                <div class="relative w-full max-w-md aspect-[3/4] rounded-2xl p-[2px] bg-gradient-to-b from-gold via-gold-dark to-transparent shadow-[0_0_50px_rgba(212,175,55,0.25)]">
+                    <div class="w-full h-full bg-luxblack rounded-2xl overflow-hidden relative">
+                        <img src="https://placehold.co/600x800/121212/D4AF37?text=House+of+Angels+Salon" alt="Luxury Salon Interior" class="w-full h-full object-cover opacity-90 hover:scale-105 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 p-4 bg-black/60 backdrop-blur-md rounded-xl border border-gold/30">
+                            <p class="font-cinzel text-gold text-sm font-semibold tracking-wider">VIP TREATMENT ROOM</p>
+                            <p class="text-gray-300 text-xs mt-1">Experience absolute peace and personalized beauty care.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 px-4 sm:px-6 lg:px-8 bg-luxblack border-t border-gold/20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-gold text-xs tracking-[0.3em] uppercase font-semibold">Exquisite Offerings</span>
+                <h2 class="font-cinzel text-3xl sm:text-5xl font-bold">Our Signature <span class="gold-gradient-text">Services</span></h2>
+                <div class="w-24 h-[2px] bg-gold mx-auto"></div>
+                <p class="text-gray-400 text-sm sm:text-base">Designed to pamper your senses and elevate your natural radiance.</p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="group bg-luxblack-card rounded-2xl p-8 border border-gold/20 hover:border-gold transition duration-300 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-bl-full pointer-events-none group-hover:bg-gold/15 transition"></div>
+                    <div class="w-14 h-14 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-scissors"></i>
+                    </div>
+                    <h3 class="font-cinzel text-xl font-bold mb-3 text-gold-light">Royal Hair Styling & Spa</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Advanced keratin treatments, bespoke cuts, Balayage coloring, and deep conditioning organic hair spas.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-gold/10">
+                        <span class="text-gold font-semibold text-sm">Starting at Rs. 3,500</span>
+                        <a href="#booking" class="text-xs uppercase tracking-wider text-gray-300 hover:text-gold flex items-center gap-1 font-semibold">Book <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group bg-luxblack-card rounded-2xl p-8 border border-gold/20 hover:border-gold transition duration-300 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-bl-full pointer-events-none group-hover:bg-gold/15 transition"></div>
+                    <div class="w-14 h-14 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="font-cinzel text-xl font-bold mb-3 text-gold-light">Bridal & Party Makeovers</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Exclusive signature bridal makeup packages by celebrity makeup artists using top-tier international brands.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-gold/10">
+                        <span class="text-gold font-semibold text-sm">Starting at Rs. 25,000</span>
+                        <a href="#booking" class="text-xs uppercase tracking-wider text-gray-300 hover:text-gold flex items-center gap-1 font-semibold">Book <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group bg-luxblack-card rounded-2xl p-8 border border-gold/20 hover:border-gold transition duration-300 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-bl-full pointer-events-none group-hover:bg-gold/15 transition"></div>
+                    <div class="w-14 h-14 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-spa"></i>
+                    </div>
+                    <h3 class="font-cinzel text-xl font-bold mb-3 text-gold-light">Gold & Diamond Facials</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Rejuvenating anti-aging facials infused with 24k gold leaf and botanical extracts for a radiant glow.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-gold/10">
+                        <span class="text-gold font-semibold text-sm">Starting at Rs. 6,000</span>
+                        <a href="#booking" class="text-xs uppercase tracking-wider text-gray-300 hover:text-gold flex items-center gap-1 font-semibold">Book <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="group bg-luxblack-card rounded-2xl p-8 border border-gold/20 hover:border-gold transition duration-300 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-bl-full pointer-events-none group-hover:bg-gold/15 transition"></div>
+                    <div class="w-14 h-14 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-hand-sparkles"></i>
+                    </div>
+                    <h3 class="font-cinzel text-xl font-bold mb-3 text-gold-light">Luxury Manicure & Pedicure</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Relaxing hand and foot treatments featuring exfoliation, organic mud masks, and precise nail artistry.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-gold/10">
+                        <span class="text-gold font-semibold text-sm">Starting at Rs. 4,000</span>
+                        <a href="#booking" class="text-xs uppercase tracking-wider text-gray-300 hover:text-gold flex items-center gap-1 font-semibold">Book <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="group bg-luxblack-card rounded-2xl p-8 border border-gold/20 hover:border-gold transition duration-300 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-bl-full pointer-events-none group-hover:bg-gold/15 transition"></div>
+                    <div class="w-14 h-14 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-feather"></i>
+                    </div>
+                    <h3 class="font-cinzel text-xl font-bold mb-3 text-gold-light">Aromatherapy & Massage</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Deep tissue and Swedish massages using rare essential oils to melt away daily stress and muscle tension.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-gold/10">
+                        <span class="text-gold font-semibold text-sm">Starting at Rs. 5,000</span>
+                        <a href="#booking" class="text-xs uppercase tracking-wider text-gray-300 hover:text-gold flex items-center gap-1 font-semibold">Book <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="group bg-luxblack-card rounded-2xl p-8 border border-gold/20 hover:border-gold transition duration-300 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-bl-full pointer-events-none group-hover:bg-gold/15 transition"></div>
+                    <div class="w-14 h-14 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-crown"></i>
+                    </div>
+                    <h3 class="font-cinzel text-xl font-bold mb-3 text-gold-light">VIP Grooming Packages</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Complete luxury grooming suites for men and women including skin care, styling, and relaxing treatments.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-gold/10">
+                        <span class="text-gold font-semibold text-sm">Custom Packages</span>
+                        <a href="#booking" class="text-xs uppercase tracking-wider text-gray-300 hover:text-gold flex items-center gap-1 font-semibold">Book <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-24 px-4 sm:px-6 lg:px-8 bg-[#0d0d0d] border-t border-gold/20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-gold text-xs tracking-[0.3em] uppercase font-semibold">Visual Showcase</span>
+                <h2 class="font-cinzel text-3xl sm:text-5xl font-bold">The Angelic <span class="gold-gradient-text">Gallery</span></h2>
+                <div class="w-24 h-[2px] bg-gold mx-auto"></div>
+                <p class="text-gray-400 text-sm sm:text-base">A glimpse into our luxurious ambiance and master craftsmanship.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="relative group overflow-hidden rounded-2xl border border-gold/20 aspect-[4/3]">
+                    <img src="https://placehold.co/600x450/121212/D4AF37?text=Luxury+Hair+Station" alt="Gallery 1" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-6">
+                        <p class="font-cinzel text-gold text-lg">State-of-the-Art Styling Studio</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl border border-gold/20 aspect-[4/3]">
+                    <img src="https://placehold.co/600x450/121212/D4AF37?text=Bridal+Suite" alt="Gallery 2" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-6">
+                        <p class="font-cinzel text-gold text-lg">Exclusive Bridal Suite</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl border border-gold/20 aspect-[4/3]">
+                    <img src="https://placehold.co/600x450/121212/D4AF37?text=Spa+Ambiance" alt="Gallery 3" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-6">
+                        <p class="font-cinzel text-gold text-lg">Serene Spa & Treatment Rooms</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl border border-gold/20 aspect-[4/3]">
+                    <img src="https://placehold.co/600x450/121212/D4AF37?text=Nail+Bar" alt="Gallery 4" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-6">
+                        <p class="font-cinzel text-gold text-lg">Luxury Nail Bar</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl border border-gold/20 aspect-[4/3]">
+                    <img src="https://placehold.co/600x450/121212/D4AF37?text=Facial+Treatment" alt="Gallery 5" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-6">
+                        <p class="font-cinzel text-gold text-lg">Gold Facial Treatments</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl border border-gold/20 aspect-[4/3]">
+                    <img src="https://placehold.co/600x450/121212/D4AF37?text=VIP+Lounge" alt="Gallery 6" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-6">
+                        <p class="font-cinzel text-gold text-lg">VIP Client Lounge</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 px-4 sm:px-6 lg:px-8 bg-luxblack border-t border-gold/20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-6 relative">
+                <div class="relative aspect-[4/3] rounded-2xl p-[2px] bg-gradient-to-tr from-gold via-gold-dark to-transparent">
+                    <div class="w-full h-full bg-luxblack-card rounded-2xl overflow-hidden">
+                        <img src="https://placehold.co/600x500/121212/D4AF37?text=House+of+Angels+Story" alt="About House of Angels" class="w-full h-full object-cover opacity-90">
+                    </div>
+                </div>
+                <div class="absolute -bottom-6 -right-6 bg-luxblack border border-gold p-6 rounded-2xl shadow-2xl hidden sm:block">
+                    <p class="font-cinzel text-3xl font-bold gold-gradient-text">10+ Years</p>
+                    <p class="text-xs text-gray-300 tracking-widest uppercase mt-1">Of Excellence in Beauty</p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 space-y-6">
+                <span class="text-gold text-xs tracking-[0.3em] uppercase font-semibold">Our Heritage</span>
+                <h2 class="font-cinzel text-3xl sm:text-5xl font-bold">Crafting Perfection <span class="gold-gradient-text">Since 2014</span></h2>
+                <p class="text-gray-300 text-base leading-relaxed">
+                    House of Angels was founded with a singular vision: to create a sanctuary where modern aesthetics meet timeless luxury. Every service we offer is tailored to elevate your natural beauty while providing an atmosphere of absolute relaxation and peace.
+                </p>
+                <div class="grid grid-cols-2 gap-6 pt-2">
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-circle-check text-gold mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold text-white text-sm">Certified Experts</h4>
+                            <p class="text-xs text-gray-400 mt-1">International certified stylists and therapists.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-circle-check text-gold mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold text-white text-sm">Premium Products</h4>
+                            <p class="text-xs text-gray-400 mt-1">100% genuine organic luxury brands.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-4">
+                    <a href="#booking" class="inline-block gold-gradient-bg text-black font-bold px-8 py-3.5 rounded-full uppercase text-xs tracking-wider shadow-lg hover:scale-105 transition">
+                        Experience Luxury Today
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0a0a0a] via-[#101010] to-luxblack border-t border-gold/20">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                <span class="text-gold text-xs tracking-[0.3em] uppercase font-semibold">Reservation</span>
+                <h2 class="font-cinzel text-3xl sm:text-5xl font-bold">Book Your <span class="gold-gradient-text">Appointment</span></h2>
+                <div class="w-24 h-[2px] bg-gold mx-auto"></div>
+                <p class="text-gray-400 text-sm">Fill in your details below and instantly send your appointment request via WhatsApp to <span class="text-gold font-semibold">03060001929</span>.</p>
+            </div>
+
+            <!-- Booking Form Card -->
+            <div class="bg-luxblack-card rounded-3xl p-8 sm:p-12 border border-gold/30 shadow-2xl relative">
+                <div class="absolute top-0 right-12 -translate-y-1/2 w-20 h-20 rounded-full gold-gradient-bg flex items-center justify-center text-black text-2xl shadow-lg">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+
+                <form id="whatsapp-booking-form" onsubmit="sendToWhatsApp(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Full Name -->
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-gold mb-2 font-medium">Your Full Name *</label>
+                            <input type="text" id="b-name" required placeholder="e.g. Ayesha Khan" class="w-full bg-luxblack border gold-border rounded-xl px-4 py-3.5 text-white placeholder-gray-600 focus:outline-none transition">
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-gold mb-2 font-medium">Phone Number *</label>
+                            <input type="tel" id="b-phone" required placeholder="e.g. 0300 1234567" class="w-full bg-luxblack border gold-border rounded-xl px-4 py-3.5 text-white placeholder-gray-600 focus:outline-none transition">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Select Service -->
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-gold mb-2 font-medium">Select Service *</label>
+                            <select id="b-service" required class="w-full bg-luxblack border gold-border rounded-xl px-4 py-3.5 text-white focus:outline-none transition">
+                                <option value="" disabled selected>Choose a service</option>
+                                <option value="Royal Hair Styling & Spa">Royal Hair Styling & Spa</option>
+                                <option value="Bridal & Party Makeover">Bridal & Party Makeover</option>
+                                <option value="Gold & Diamond Facial">Gold & Diamond Facial</option>
+                                <option value="Luxury Manicure & Pedicure">Luxury Manicure & Pedicure</option>
+                                <option value="Aromatherapy & Massage">Aromatherapy & Massage</option>
+                                <option value="VIP Grooming Package">VIP Grooming Package</option>
+                            </select>
+                        </div>
+
+                        <!-- Date & Time -->
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-gold mb-2 font-medium">Preferred Date & Time *</label>
+                            <input type="datetime-local" id="b-date" required class="w-full bg-luxblack border gold-border rounded-xl px-4 py-3.5 text-white focus:outline-none transition">
+                        </div>
+                    </div>
+
+                    <!-- Additional Notes -->
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-gold mb-2 font-medium">Additional Notes / Special Requests</label>
+                        <textarea id="b-notes" rows="3" placeholder="Any specific requirements or stylist preference..." class="w-full bg-luxblack border gold-border rounded-xl px-4 py-3.5 text-white placeholder-gray-600 focus:outline-none transition"></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-4 text-center">
+                        <button type="submit" class="w-full sm:w-auto gold-gradient-bg text-black font-extrabold px-10 py-4 rounded-full uppercase text-xs tracking-[0.2em] shadow-xl hover:brightness-110 transition flex items-center justify-center gap-3 mx-auto">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Send Appointment via WhatsApp
+                        </button>
+                        <p class="text-xs text-gray-400 mt-3">Direct submission to: <span class="text-gold font-semibold">0306-0001929</span></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-luxblack border-t border-gold/20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+            <!-- Col 1: Brand Info -->
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-gold-dark via-gold to-gold-light flex items-center justify-center">
+                        <i class="fa-solid fa-feather text-black text-lg"></i>
+                    </div>
+                    <span class="font-cinzel font-bold text-lg gold-gradient-text">HOUSE OF ANGELS</span>
+                </div>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                    The ultimate destination for luxury hair, skin, and bridal styling. Experience divine beauty care.
+                </p>
+                <div class="flex items-center gap-4 text-gold text-lg pt-2">
+                    <a href="#" class="w-9 h-9 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold hover:text-black transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold hover:text-black transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold hover:text-black transition"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://wa.me/923060001929" class="w-9 h-9 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold hover:text-black transition"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <!-- Col 2: Quick Links -->
+            <div class="space-y-4">
+                <h4 class="font-cinzel text-gold font-bold text-sm tracking-widest uppercase">Quick Links</h4>
+                <ul class="space-y-2 text-xs text-gray-300">
+                    <li><a href="#home" class="hover:text-gold transition">Home</a></li>
+                    <li><a href="#services" class="hover:text-gold transition">Our Services</a></li>
+                    <li><a href="#gallery" class="hover:text-gold transition">Gallery Showcase</a></li>
+                    <li><a href="#about" class="hover:text-gold transition">About House of Angels</a></li>
+                    <li><a href="#booking" class="hover:text-gold transition">Book Appointment</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Services Menu -->
+            <div class="space-y-4">
+                <h4 class="font-cinzel text-gold font-bold text-sm tracking-widest uppercase">Signature Services</h4>
+                <ul class="space-y-2 text-xs text-gray-300">
+                    <li><a href="#services" class="hover:text-gold transition">Royal Hair Spa & Styling</a></li>
+                    <li><a href="#services" class="hover:text-gold transition">Bridal & Party Makeovers</a></li>
+                    <li><a href="#services" class="hover:text-gold transition">Gold & Diamond Facials</a></li>
+                    <li><a href="#services" class="hover:text-gold transition">Manicure & Pedicure</a></li>
+                    <li><a href="#services" class="hover:text-gold transition">Aromatherapy Massages</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: Contact Details -->
+            <div class="space-y-4">
+                <h4 class="font-cinzel text-gold font-bold text-sm tracking-widest uppercase">Contact Us</h4>
+                <ul class="space-y-3 text-xs text-gray-300">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-location-dot text-gold mt-1"></i>
+                        <span>Luxury Plaza, Main Boulevard, DHA / Commercial Hub</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-phone text-gold"></i>
+                        <a href="tel:03060001929" class="hover:text-gold">0306-0001929</a>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-envelope text-gold"></i>
+                        <span>info@houseofangels.salon</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-clock text-gold"></i>
+                        <span>Mon - Sun: 10:00 AM - 9:00 PM</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 border-t border-gold/10 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
+            <p>&copy; 2026 House of Angels. All Rights Reserved. Crafted with Gold & Elegance.</p>
+            <p class="mt-2 sm:mt-0">Official WhatsApp: <a href="https://wa.me/923060001929" class="text-gold font-semibold">0306-0001929</a></p>
+        </div>
+    </section>
+
+    <script>
+        // Dismiss intro screen instantly when animation finishes (9 seconds) or when skipped
+        const introScreen = document.getElementById('intro-screen');
+        
+        const dismissIntro = () => {
+            if (introScreen) {
+                introScreen.style.opacity = '0';
+                setTimeout(() => {
+                    introScreen.style.display = 'none';
+                }, 300);
+            }
+        };
+
+        // Automatically hide intro screen precisely when slow animation completes
+        setTimeout(() => {
+            dismissIntro();
+        }, 9000);
+
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Format and Send Booking Request to WhatsApp (03060001929)
+        function sendToWhatsApp(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('b-name').value.trim();
+            const phone = document.getElementById('b-phone').value.trim();
+            const service = document.getElementById('b-service').value;
+            const date = document.getElementById('b-date').value;
+            const notes = document.getElementById('b-notes').value.trim();
+
+            const message = `✨ *NEW APPOINTMENT REQUEST - HOUSE OF ANGELS* ✨\n\n` +
+                            `👤 *Name:* ${name}\n` +
+                            `📞 *Phone:* ${phone}\n` +
+                            `💆‍♀️ *Service:* ${service}\n` +
+                            `📅 *Date & Time:* ${date}\n` +
+                            `💬 *Notes:* ${notes || 'None'}\n\n` +
+                            `_Please confirm my appointment!_`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/923060001929?text=${encodedMessage}`;
+
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
